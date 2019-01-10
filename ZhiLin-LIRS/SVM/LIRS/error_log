@@ -1,0 +1,93 @@
+g++ -Wall -Wconversion -O3 -fPIC -c -o block.o block.cpp
+block.cpp: In function ‘problem my_get_block(BlockProblem*, int, long long unsigned int*, int**, FILE*, int*)’:
+block.cpp:726:42: error: invalid conversion from ‘FILE* {aka _IO_FILE*}’ to ‘int’ [-fpermissive]
+   lseek(fp, offset[instance_id], SEEK_SET);
+                                          ^
+In file included from block.cpp:8:0:
+/usr/include/unistd.h:337:16: note:   initializing argument 1 of ‘__off_t lseek(int, __off_t, int)’
+ extern __off_t lseek (int __fd, __off_t __offset, int __whence) __THROW;
+                ^
+block.cpp:731:40: error: invalid conversion from ‘FILE* {aka _IO_FILE*}’ to ‘int’ [-fpermissive]
+   read(fp, &subprob.y[i], sizeof(int)*1);
+                                        ^
+In file included from /usr/include/unistd.h:1151:0,
+                 from block.cpp:8:
+/usr/include/x86_64-linux-gnu/bits/unistd.h:34:1: note:   initializing argument 1 of ‘ssize_t read(int, void*, size_t)’
+ read (int __fd, void *__buf, size_t __nbytes)
+ ^
+block.cpp:744:38: error: invalid conversion from ‘FILE* {aka _IO_FILE*}’ to ‘int’ [-fpermissive]
+    read(fp, &xi->index, sizeof(int)*1);
+                                      ^
+In file included from /usr/include/unistd.h:1151:0,
+                 from block.cpp:8:
+/usr/include/x86_64-linux-gnu/bits/unistd.h:34:1: note:   initializing argument 1 of ‘ssize_t read(int, void*, size_t)’
+ read (int __fd, void *__buf, size_t __nbytes)
+ ^
+block.cpp:755:41: error: invalid conversion from ‘FILE* {aka _IO_FILE*}’ to ‘int’ [-fpermissive]
+    read(fp, &xi->value, sizeof(double)*1);
+                                         ^
+In file included from /usr/include/unistd.h:1151:0,
+                 from block.cpp:8:
+/usr/include/x86_64-linux-gnu/bits/unistd.h:34:1: note:   initializing argument 1 of ‘ssize_t read(int, void*, size_t)’
+ read (int __fd, void *__buf, size_t __nbytes)
+ ^
+block.cpp:714:6: warning: unused variable ‘index_buf’ [-Wunused-variable]
+  int index_buf[1000000];
+      ^
+block.cpp:715:9: warning: unused variable ‘value_buf’ [-Wunused-variable]
+  double value_buf[1000000];
+         ^
+block.cpp:718:9: warning: unused variable ‘start_test’ [-Wunused-variable]
+  time_t start_test = time(NULL);
+         ^
+block.cpp: In function ‘void block_solve_linear_c_svc(BlockProblem*, const parameter*, double*, double, double)’:
+block.cpp:893:33: warning: conversion to ‘int’ from ‘long long unsigned int’ may alter its value [-Wconversion]
+    int page_id = byte_offset[0]/4096; //start page
+                                 ^
+block.cpp:899:32: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+      if( (byte_offset[i]/4096) > page_id) //next page
+                                ^
+block.cpp:950:94: error: invalid conversion from ‘int’ to ‘FILE* {aka _IO_FILE*}’ [-fpermissive]
+    struct problem subprob = my_get_block(bprob, i, byte_offset, assign_table, fd, num_feature);
+                                                                                              ^
+block.cpp:697:16: note:   initializing argument 5 of ‘problem my_get_block(BlockProblem*, int, long long unsigned int*, int**, FILE*, int*)’
+ struct problem my_get_block(BlockProblem *bprob, int sub_id, unsigned long long *offset, int **assign_table, FILE *fp, int *num_feature)
+                ^
+block.cpp:880:8: warning: unused variable ‘solved’ [-Wunused-variable]
+   bool solved = true;
+        ^
+block.cpp:796:6: warning: unused variable ‘inner_max_iter’ [-Wunused-variable]
+  int inner_max_iter=param->inner_max_iter;
+      ^
+block.cpp:798:9: warning: unused variable ‘eps’ [-Wunused-variable]
+  double eps=param->eps;
+         ^
+block.cpp:799:9: warning: unused variable ‘inner_eps’ [-Wunused-variable]
+  double inner_eps = param->inner_eps;
+         ^
+block.cpp: In member function ‘void BlockProblem::read_meta(const char*)’:
+block.cpp:278:25: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’, declared with attribute warn_unused_result [-Wunused-result]
+  fscanf(meta, "%s", fmt);
+                         ^
+block.cpp:287:58: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’, declared with attribute warn_unused_result [-Wunused-result]
+  fscanf(meta, "%d %d %d %d", &nBlocks, &l, &n, &nr_class);
+                                                          ^
+block.cpp:293:32: warning: ignoring return value of ‘int fscanf(FILE*, const char*, ...)’, declared with attribute warn_unused_result [-Wunused-result]
+   fscanf(meta, "%d", &label[i]);
+                                ^
+block.cpp: In function ‘problem my_get_block(BlockProblem*, int, long long unsigned int*, int**, FILE*, int*)’:
+block.cpp:731:41: warning: ignoring return value of ‘ssize_t read(int, void*, size_t)’, declared with attribute warn_unused_result [-Wunused-result]
+   read(fp, &subprob.y[i], sizeof(int)*1);
+                                         ^
+block.cpp:744:39: warning: ignoring return value of ‘ssize_t read(int, void*, size_t)’, declared with attribute warn_unused_result [-Wunused-result]
+    read(fp, &xi->index, sizeof(int)*1);
+                                       ^
+block.cpp:755:42: warning: ignoring return value of ‘ssize_t read(int, void*, size_t)’, declared with attribute warn_unused_result [-Wunused-result]
+    read(fp, &xi->value, sizeof(double)*1);
+                                          ^
+block.cpp: In function ‘void block_solve_linear_c_svc(BlockProblem*, const parameter*, double*, double, double)’:
+block.cpp:840:42: warning: ignoring return value of ‘ssize_t read(int, void*, size_t)’, declared with attribute warn_unused_result [-Wunused-result]
+  read(fd, &num_feature[0], sizeof(int)*l);
+                                          ^
+Makefile:20: recipe for target 'block.o' failed
+make: *** [block.o] Error 1

@@ -1,0 +1,18 @@
+Compile
+	g++ -Wall -Wconversion -O3 -fPIC -g -o gen_binary_data gen_binary_data.c
+	g++ -Wall -Wconversion -O3 -fPIC -g -o read_test_binary read_test_binary.c
+
+ -s 3 -e 0.0001 -B -1 -c 1 -m 5 -p -S 10 -n 8282736 -l 100 -a 2 ../data/webspam.train.10
+ 
+./blocktrain -s 3 -e 0.0001 -B -1 -c 1 -m 5 -p -S 40 -n 16609143 -l 200000 -a 2 ../data/webspam.train_14G.40
+
+./blocktrain -s 3 -e 0.0001 -B -1 -c 1 -m 5 -p -S 40 -n 16609143 -l 200000 -a 2 ~/cdblock_exp-2.0/data/webspam.train.40
+
+./blocktrain -s 3 -e 0.0001 -B -1 -c 1 -m 5 -p -S 40  ../data/workload/webspam_14G
+
+sudo mkdir /sys/fs/cgroup/memory/mymemory
+sudo chown -R xpoint:users /sys/fs/cgroup/memory/mymemory
+echo 1000000000 > /sys/fs/cgroup/memory/mymemory/memory.limit_in_bytes
+echo 3 > /proc/sys/vm/drop_caches
+cgexec -g memory:/mymemory ./blocktrain -s 3 -e 0.0001 -B -1 -c 1 -m 5 -p -S 40 -r 1 ../data/workload/webspam_14G
+
