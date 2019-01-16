@@ -1,20 +1,20 @@
 ﻿1. SVM	
-	1. execute as root
+	1. execute as root  
 		sudo su
 		
-	2. establish cgroup env, limit memory size
-		sudo mkdir /sys/fs/cgroup/memory/mymemory
-		sudo chown -R eclab:users /sys/fs/cgroup/memory/mymemory
-		echo 1000000000 > /sys/fs/cgroup/memory/mymemory/memory.limit_in_bytes #limit memory size to 1GB
+	2. establish cgroup env, limit memory size  
+		sudo mkdir /sys/fs/cgroup/memory/mymemory  
+		sudo chown -R eclab:users /sys/fs/cgroup/memory/mymemory  
+		echo 1000000000 > /sys/fs/cgroup/memory/mymemory/memory.limit_in_bytes #limit memory size to 1GB  
 		
-	3. make sure that you have the following 16 files and dir, in the same dir ex./media/ssd/workload/SVM/
-		Raw data
-			webspam.train, epsilon_normalized, kddb, higgs
-		BMF splitting file
-			webspam.train.40/, epsilon_normalized.30/, kddb.40/, higgs.40/
-		Testing data
-			webspam.test.cbin, epsilon_normalized.t.cbin, kddb.t.cbin, higgs.t.cbin
-		LIRS binary file
+	3. make sure that you have the following 16 files and dir, in the same dir ex./media/ssd/workload/SVM/  
+		Raw data  
+			webspam.train, epsilon_normalized, kddb, higgs  
+		BMF splitting file  
+			webspam.train.40/, epsilon_normalized.30/, kddb.40/, higgs.40/  
+		Testing data  
+			webspam.test.cbin, epsilon_normalized.t.cbin, kddb.t.cbin, higgs.t.cbin  
+		LIRS binary file  
 			webspam_14G/, epsilon_11G/, kddb_5G/, higgs_7G/
 		
 	4. Baseline - BMF
