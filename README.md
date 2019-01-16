@@ -1,6 +1,7 @@
 # ZhiLin-LIRS
 1. SVM	
 	1. execute as root
+		
 		sudo su
 		
 	2. establish cgroup env, limit memory size
