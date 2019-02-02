@@ -1,4 +1,17 @@
-﻿1. SVM	
+LIRS is a lightweight implementation of random shuffling that can help to reduce the total training time of machine learning training algorithms. Taking advantage of the emerging non-volatile memory (NVM) based storage device, such as Intel Optane SSD, which offers fast random accesses, LIRS can achieve full-range random shuffling of training data with minimal memory space requirements. LIRS can be applied on any machine learning algorithms that use mini-batch gradient descent for training, including the popular SVM and DNN. 
+
+
+Here, we use SVM and DNN as examples to illustrate how to use LIRS to improve the convergence rate thereby reduce the total training time. If you use LIRS in your research, we would appreciate a citation to the following paper:
+
+
+Zhi-Lin Ke, Hsiang-Yun Cheng, Chia-Lin Yang, “LIRS: Enabling efficient machine learning on NVM-based storage via a lightweight implementation of random shuffling”, CoRR abs/1810.04509 (2018)
+
+https://arxiv.org/abs/1810.04509
+
+
+Installation and running instructions:
+
+1. SVM	
 	1. execute as root  
 		sudo su
 		
